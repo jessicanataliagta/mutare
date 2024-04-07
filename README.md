@@ -6,7 +6,9 @@ A script toolset that allows you to convert auto rig characters for GTA and game
 Made with profiles adaptation in mind, you can easily edit the scripts to support other games.
 
 The scripts are made to ease the process of characters creation mods on games. So you can take a 3D character model and have in the game in just a few minutes with just a few clicks and without rig knowledge.
-So you won't need to spend 40 minutes positioning each bone and adjusting weight paint on the vertices.
+So you won't need to spend 40 minutes positioning each bone and adjusting weight paint on the vertices.  
+
+[DOCUMENTATION AND TUTORIALS](https://github.com/jessicanataliagta/mutare/wiki)
 
 Currently suppoorted auto rig tools:
 
