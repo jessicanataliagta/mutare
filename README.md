@@ -10,21 +10,22 @@ So you won't need to spend 40 minutes positioning each bone and adjusting weight
 
 [DOCUMENTATION AND TUTORIALS](https://github.com/jessicanataliagta/mutare/wiki)
 
-Currently suppoorted auto rig tools:
+**Currently suppoorted auto rig tools:**
 
-Mixamo (No support for facial rig)
+Mixamo (does not support facial rig)  
+**Note:** I'm still trying to find a free auto rig that support facial rig, not luck untill now.  
 
-Currently suppoorted 3D Softwares:
+**Currently suppoorted 3D Softwares:**
 
 3DS MAX  
 
-Currently suppoorted games:
+**Currently suppoorted games:**
 
 Grand Theft Auto: San Andreas  
 Grand Theft Auto: Vice City  
 Grand Theft Auto III  
 
-Planned support for the future:  
+**Planned support for the future:**  
 
 Bully: Scholarship Edition  
 Manhunt 1  
