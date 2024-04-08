@@ -16,20 +16,16 @@ Mixamo (No support for facial rig)
 
 Currently suppoorted 3D Softwares:
 
-3DS MAX
+3DS MAX  
 
 Currently suppoorted games:
 
-Grand Theft Auto: San Andreas
+Grand Theft Auto: San Andreas  
+Grand Theft Auto: Vice City  
+Grand Theft Auto III  
 
-Grand Theft Auto: Vice City
+Planned support for the future:  
 
-Grand Theft Auto III
-
-Planned support for the future:
-
-Bully: Scholarship Edition
-
-Manhunt 1
-
-Manhunt 2
+Bully: Scholarship Edition  
+Manhunt 1  
+Manhunt 2  
