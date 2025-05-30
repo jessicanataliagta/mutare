@@ -90,6 +90,69 @@ fn safeConvertSelectionToPoly =
         if isMeshObject obj and not (isKindOf obj Editable_Poly) do convertToPoly obj
 )
 
+fn createGTASADummySkeleton_Accurate =
+(
+    -- Delete old GTASA dummies
+    for boneData in gtaSABoneHierarchy do (
+        local name = boneData[1]
+        for obj in objects where (classof obj == Dummy and obj.name == name) do delete obj
+    )
+
+    local dummyArray = #()
+    local rootDummy = undefined
+    for boneData in gtaSABoneHierarchy do (
+        local boneName = boneData[1]
+        local d = Dummy name:boneName
+        d.boxsize = [0.05,0.05,0.05]
+        d.boneEnable = true
+
+        local tagInfo = getGTASATagData boneName
+        if tagInfo != undefined then (
+            local tagVal = tagInfo[2]
+            local childNumVal = tagInfo[3]
+            local fakeBipedVal = tagInfo[4]
+            local buffer = ""
+            if tagVal != undefined do buffer += "tag = " + tagVal as string
+            if childNumVal != undefined do (
+                if buffer != "" then buffer += "\r\n"
+                buffer += "childNum = " + childNumVal as string
+            )
+            if fakeBipedVal != undefined do (
+                if buffer != "" then buffer += "\r\n"
+                buffer += "fakeBiped = " + fakeBipedVal as string
+            )
+            if buffer != "" do setUserPropBuffer d buffer
+        )
+
+        local posArray = getGTASABonePos boneName
+        local rot = getGTASABoneRot boneName
+        if rot == undefined do rot = quat 0 0 0 1
+        local pos = point3 posArray[1] posArray[2] posArray[3]
+        local tm = (rot as matrix3)
+        tm.row4 = pos
+        d.transform = tm
+
+        append dummyArray #(boneName, d)
+        if boneName == "Root" then rootDummy = d
+    )
+
+    -- Set parent relationships
+    for boneData in gtaSABoneHierarchy do (
+        local boneName = boneData[1]
+        local parentNames = boneData[2]
+        local childDummy = undefined
+        local parentDummy = undefined
+        for item in dummyArray do (
+            if item[1] == boneName then childDummy = item[2]
+            if parentNames.count > 0 and item[1] == parentNames[1] then parentDummy = item[2]
+        )
+        if childDummy != undefined and parentDummy != undefined do (
+            childDummy.parent = parentDummy
+        )
+    )
+    deselect objects
+)
+
 fn createGTASASkeleton_Adaptive =
 (
     local selectedDummies = for o in selection where (isKindOf o Dummy and o.boneEnable) collect o
